@@ -1,7 +1,7 @@
 ---
 title: 'Activity: Popular Names'
 author: "Edward Cho"
-date: "DUE DATE"
+date: "6/5/2023"
 output:
   html_document:
     df_print: paged
@@ -55,8 +55,10 @@ My answer here....
 
 ```{r}
 ## Look at the data a few different ways (see Ch 9 for more).
-
-
+head(BabyNames)
+tail(BabyNames)
+BabyNames %>%
+  summary( case = n() )
 ```
 
 ### Step 2
