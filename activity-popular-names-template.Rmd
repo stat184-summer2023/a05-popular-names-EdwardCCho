@@ -1,6 +1,6 @@
 ---
 title: 'Activity: Popular Names'
-author: "YOUR NAME HERE"
+author: "Edward Cho"
 date: "DUE DATE"
 output:
   html_document:
