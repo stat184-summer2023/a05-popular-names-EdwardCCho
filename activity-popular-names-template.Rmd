@@ -101,7 +101,7 @@ The new variable is popularity and it is in a scale of 0 to 6000. Its relationsh
 Using the BabyNames data set, filter the data to display just the 5 names that you picked.  Then group the cases by year and name, and count how many total births per year were recorded for each of the names (regardless of sex).  
 
 my answer here...
-I would want to use the table and then filter it by one of the 5 names and reuse the code accordingly. Then group by year and name then summarise to count the total of births per year for each name.
+I would want to use the table and then filter it by one of the 5 names. Then group by year and name then summarise to count the total of births per year for each name.
 
 ### Step 6
 
@@ -111,16 +111,16 @@ I would want to use the table and then filter it by one of the 5 names and reuse
 
 ```{r}
 ## Create my glyph ready data set here
-BabyNames %>%
-  ggplot(aes(x = year, y = count, group = name)) + 
-  geom_line(linewidth = 1, alpha = 0.5, aes(color = name)) + 
-  ylab("Popularity") + 
-  xlab("Year") +
-  ggtitle("Popularity of Names Over Time")
+GlyphReadyForm <-
+  BabyNames %>%
+  filter(name == 'Maude' | name == 'Florence' | name == 'Maggie' | name == 'Pearl' | name == 'Nora') %>%
+  group_by(year, name) %>%
+  summarise( total = sum(count)) 
 
 # inspect the result
+head(GlyphReadyForm)
 
-
+head(total)
 ```
 
 
@@ -142,7 +142,12 @@ If you prepared your `GlyphReadyForm` data set correctly, you should just be abl
 
 ```{r}
 #My code here 
-
+GlyphReadyForm %>%
+  ggplot(aes(x = year, y = total, group = name)) + 
+  geom_line(size = 1, alpha = 0.5, aes(color = name)) + 
+  ylab("Popularity") + 
+  xlab("Year") +
+  ggtitle("Popularity of Names Over Time")
 
 ```
 
