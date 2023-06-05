@@ -52,6 +52,7 @@ For steps 5-7, pick any FIVE names you wish. I choose Arnaldo, Ahmid, Nicho, Jen
 *Examine the data you have at hand - for this project the data are the ones available in the `BabyNames` data set. Use at least 2 different functions to examine your data. Then answer the questions: What are the variables are available? What is a case?*
 
 My answer here.... 
+is the table having 4 variables with 1,792,091 observations or cases.
 
 ```{r}
 ## Look at the data a few different ways (see Ch 9 for more).
@@ -65,40 +66,42 @@ BabyNames %>%
 
 [This should be done by hand on paper, nothing to show in the HTML doc]
 
-
 ### Step 3 
 
 ##### What variable(s) from the raw data table do not appear at all in the graph?
 
 My answer here.... 
+Popularity is not in the table but is in the graph.
 
 ##### What variable(s) in the graph are similar to corresponding variables in the raw data table, but might have been transformed in some way?
 
 My answer here.... 
-
+The year are limited to 1875 to 2000 (because the latest year is 2013) and then the names chosen are Abraham, Franklin, and Woodrow (definitely more than 3 names).
 
 ### Step 4
 
 ##### Have cases been filtered out?
 
 My answer here.... 
-
+2001 to 2013 have been filtered out, as well as any other name (than the 3 in the graph) that is available in the data table.
 
 ##### Have cases been grouped and summarized within groups in any way?
 
 My answer here.... 
-
+3 separate names (and popularity) have been grouped by year.
 
 ##### Have any new variables been introduced?  If so, what the relationship between the new variables and existing variables?
 
 My answer here.... 
-
+The new variable is popularity and it is in a scale of 0 to 6000. Its relationship to other variables is the amount of times the name was used in the other variable (in this case it is year) which relates to it by how many times that name was used and how popular it was from 1875 to 2013.
 
 ### Step 5
 
 
 Using the BabyNames data set, filter the data to display just the 5 names that you picked.  Then group the cases by year and name, and count how many total births per year were recorded for each of the names (regardless of sex).  
 
+my answer here...
+I would want to use the table and then filter it by one of the 5 names and reuse the code accordingly. Then group by year and name then summarise to count the total of births per year for each name.
 
 ### Step 6
 
@@ -108,7 +111,12 @@ Using the BabyNames data set, filter the data to display just the 5 names that y
 
 ```{r}
 ## Create my glyph ready data set here
-
+BabyNames %>%
+  ggplot(aes(x = year, y = count, group = name)) + 
+  geom_line(linewidth = 1, alpha = 0.5, aes(color = name)) + 
+  ylab("Popularity") + 
+  xlab("Year") +
+  ggtitle("Popularity of Names Over Time")
 
 # inspect the result
 
